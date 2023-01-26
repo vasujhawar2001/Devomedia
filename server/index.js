@@ -7,6 +7,15 @@ import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
+import authRoutes from "./routes/auth.js"
+import userRoutes from "./routes/users.js"
+import postRoutes from "./routes/posts.js"
+import {register} from "./controllers/auth.js"
+import {createPost} from "./controllers/posts.js"
+import {verifyToken} from "./middleware/auth.js"
+// import User from "./models/User.js"
+// import Post from "./models/Post.js";
+// import {users, posts} from "./data/index.js"
 
 import { fileURLToPath } from "url";
 
@@ -35,6 +44,16 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage});
 
+/* Routes with files */
+
+app.post("/auth/register", upload.single("picture"), register)
+app.post("/posts", verifyToken, upload.single("picture"), createPost)
+
+/* ROUTES */
+app.use('/auth', authRoutes);
+app.use("/user", userRoutes)
+app.use("/posts", postRoutes);
+
 /* MONGOOSE */
 mongoose.set('strictQuery', false);
 const PORT = process.env.PORT || 6001;
@@ -43,5 +62,8 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology:true
 }).then(()=>{
     app.listen(PORT, ()=>console.log(`Server mongoose on port ${PORT}`));
+    //injected data to database
+    // User.insertMany(users);
+    // Post.insertMany(posts);
 }).catch((error)=>console.log(`${error} Did not connect!`))
 
