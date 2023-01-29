@@ -27,17 +27,13 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer:persistedReducer,
-  middleware:(getDefaultMiddleware) => {
+  middleware:(getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck:[FLUSH,
-        REHYDRATE,
-        PAUSE,
-        PERSIST,
-        PURGE,
-        REGISTER]
-    })
-  }
-})
+      serializableCheck:{
+        ignoredActions: [FLUSH, REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER],
+      },
+    }),
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
