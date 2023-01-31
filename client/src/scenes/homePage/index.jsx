@@ -6,13 +6,10 @@ import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import AdvertWidget from "scenes/widgets/AdvertWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
-import { useNavigate } from "react-router-dom";
-
-const navigate = useNavigate();
 
 const HomePage = () => {
-  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const { _id, picturePath } = useSelector((state) => state.user);
+    const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+    const { _id, picturePath } = useSelector((state) => state.user);
 
   return (
     <Box>
@@ -36,7 +33,7 @@ const HomePage = () => {
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
-            <AdvertWidget onClick={() => navigate('https://www.bahuranisaree.com/')}/>
+            <AdvertWidget/>
             <Box m="2rem 0" />
             <FriendListWidget userId={_id} />
           </Box>
