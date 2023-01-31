@@ -41,7 +41,7 @@ const NavBar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = "Vasu Jhawar" ||`${user.firstName} ${user.lastName}`;
+  const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -49,7 +49,7 @@ const NavBar = () => {
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
-          color="black"
+          color={theme.palette.neutral.main}
           onClick={() => navigate("/home")}
           sx={{
             "&:hover": {

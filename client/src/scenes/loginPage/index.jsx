@@ -8,7 +8,7 @@ const LoginPage = () => {
     <Box>
       <Box
         width="100%"
-        backgroundColor={theme.palette.background.alt}
+        backgroundColor={theme.palette.background.default}
         p="1rem 6%"
         textAlign="center"
       >
