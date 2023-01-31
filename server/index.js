@@ -62,7 +62,7 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology:true
 }).then(()=>{
     app.listen(PORT, ()=>console.log(`Server mongoose on port ${PORT}`));
-    //injected data to database
+    // test data injected to database
     // User.insertMany(users);
     // Post.insertMany(posts);
 }).catch((error)=>console.log(`${error} Did not connect!`))

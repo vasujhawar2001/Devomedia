@@ -1,2 +1,2 @@
-NNogram-lookalike-clone for Devs or anyone. :) <br />
+Nogram-lookalike-clone for Devs or anyone. :) <br />
 Used stack -> MERN with redux, materialUI, authentication with jwt, and form validation with formik and yup. Local server data storage through multer.
